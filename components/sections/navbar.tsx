@@ -66,46 +66,44 @@ export function Navbar({ onOpenCommand }: NavbarProps) {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Left Brand Logo & Left-Aligned Navigation */}
-        <div className="flex items-center gap-6 xl:gap-8">
-          <a
-            href="#hero"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-            className="group cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg p-1 shrink-0"
-          >
-            <AccredianLogo size="md" />
-          </a>
+        {/* Brand Logo */}
+        <a
+          href="#hero"
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          className="group cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg p-1 shrink-0"
+        >
+          <AccredianLogo size="md" />
+        </a>
 
-          {/* Desktop Nav Links (Left-Aligned) */}
-          <nav className="hidden xl:flex items-center gap-1 bg-slate-100/60 dark:bg-zinc-900/60 backdrop-blur-sm p-1.5 rounded-full border border-slate-200/60 dark:border-zinc-800">
-            {navLinks.map((link) => {
-              const isActive = activeSection === link.id;
-              return (
-                <button
-                  key={link.id}
-                  onClick={() => scrollToSection(link.id)}
-                  className={`relative px-3.5 py-1.5 text-xs font-semibold rounded-full transition-colors cursor-pointer whitespace-nowrap ${
-                    isActive
-                      ? "text-blue-600 dark:text-blue-400 font-bold"
-                      : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
-                  }`}
-                >
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeNavBg"
-                      className="absolute inset-0 bg-white dark:bg-zinc-800 rounded-full shadow-sm"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                  <span className="relative z-10">{link.label}</span>
-                </button>
-              );
-            })}
-          </nav>
-        </div>
+        {/* Center Desktop Navigation Pill (Clean & Properly Arranged) */}
+        <nav className="hidden xl:flex items-center gap-1 bg-slate-100/80 dark:bg-zinc-900/80 backdrop-blur-md px-2 py-1.5 rounded-full border border-slate-200/80 dark:border-zinc-800 shadow-sm">
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.id;
+            return (
+              <button
+                key={link.id}
+                onClick={() => scrollToSection(link.id)}
+                className={`relative px-3 py-1.5 text-xs font-semibold rounded-full transition-colors cursor-pointer whitespace-nowrap ${
+                  isActive
+                    ? "text-blue-600 dark:text-blue-400 font-bold"
+                    : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
+                }`}
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="activeNavBg"
+                    className="absolute inset-0 bg-white dark:bg-zinc-800 rounded-full shadow-sm border border-slate-200/40 dark:border-zinc-700/50"
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{link.label}</span>
+              </button>
+            );
+          })}
+        </nav>
 
         {/* Right Action Trigger Buttons */}
         <div className="hidden sm:flex items-center gap-2.5">
