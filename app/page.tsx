@@ -18,6 +18,7 @@ import { Footer } from "@/components/sections/footer";
 import { CommandMenu } from "@/components/ui/command-menu";
 import { LoadingScreen } from "@/components/ui/loading-screen";
 import { PageTransitionOverlay } from "@/components/ui/page-transition";
+import { LeftSideDock } from "@/components/ui/side-dock";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
@@ -45,6 +46,9 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-background text-foreground relative selection:bg-blue-600 selection:text-white">
+      {/* Fixed Left Vertical Stack Dock (Matching Reference Image) */}
+      <LeftSideDock />
+
       {/* Page Routing Loading Overlay */}
       <PageTransitionOverlay isVisible={isTransitioning} />
 
