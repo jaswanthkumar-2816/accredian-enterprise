@@ -253,8 +253,8 @@ export default function ConsultationPage() {
                         onClick={() => setSelectedDomain(dom)}
                         className={`p-3 text-left rounded-xl text-xs font-bold transition-all cursor-pointer ${
                           selectedDomain === dom
-                            ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
-                            : "bg-slate-50 dark:bg-zinc-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-zinc-700 hover:bg-slate-100"
+                            ? "bg-blue-600 text-white shadow-md shadow-blue-500/20 ring-2 ring-blue-500/30"
+                            : "bg-slate-100 dark:bg-zinc-800 text-slate-900 dark:text-white border border-slate-300 dark:border-zinc-700 hover:bg-blue-50 dark:hover:bg-zinc-700/80 hover:text-blue-600 dark:hover:text-blue-400"
                         }`}
                       >
                         {dom}
@@ -271,22 +271,31 @@ export default function ConsultationPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     {advisors.map((adv) => {
                       const isSelected = selectedAdvisor.includes(adv.name);
+                      const initials = adv.name
+                        .replace(/^Dr\.\s*/, "")
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")
+                        .toUpperCase();
+
                       return (
                         <button
                           key={adv.name}
                           type="button"
                           onClick={() => setSelectedAdvisor(`${adv.name} (${adv.role})`)}
-                          className={`p-3 rounded-2xl text-left border transition-all cursor-pointer ${
+                          className={`p-3.5 rounded-2xl text-left border transition-all cursor-pointer flex flex-col justify-between ${
                             isSelected
-                              ? "bg-blue-50 dark:bg-blue-950/80 border-blue-500 ring-2 ring-blue-500/20"
-                              : "bg-slate-50 dark:bg-zinc-800/60 border-slate-200 dark:border-zinc-700 hover:border-slate-300"
+                              ? "bg-blue-50 dark:bg-blue-950/80 border-blue-500 ring-2 ring-blue-500/20 shadow-sm"
+                              : "bg-slate-100 dark:bg-zinc-800/80 border-slate-200 dark:border-zinc-700 hover:border-slate-300"
                           }`}
                         >
-                          <div className={`w-8 h-8 rounded-xl bg-gradient-to-tr ${adv.imageBg} text-white font-bold flex items-center justify-center text-xs mb-2`}>
-                            {adv.name.split(" ")[1]?.[0] || "A"}
+                          <div className={`w-9 h-9 rounded-xl bg-gradient-to-tr ${adv.imageBg} text-white font-extrabold flex items-center justify-center text-xs mb-2.5 shadow-sm`}>
+                            {initials}
                           </div>
-                          <div className="text-xs font-bold text-slate-900 dark:text-white leading-tight">{adv.name}</div>
-                          <div className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">{adv.role}</div>
+                          <div>
+                            <div className="text-xs font-bold text-slate-900 dark:text-white leading-tight">{adv.name}</div>
+                            <div className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5 font-medium">{adv.role}</div>
+                          </div>
                         </button>
                       );
                     })}
