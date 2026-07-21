@@ -1,0 +1,22 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100" height="100" rx="24" fill="#0B0F19"/>
+  <defs>
+    <linearGradient id="gold-emblem-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE68A" />
+      <stop offset="40%" stop-color="#F59E0B" />
+      <stop offset="80%" stop-color="#D97706" />
+      <stop offset="100%" stop-color="#92400E" />
+    </linearGradient>
+    <linearGradient id="blue-curve-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="50%" stop-color="#60A5FA" />
+      <stop offset="100%" stop-color="#93C5FD" />
+    </linearGradient>
+  </defs>
+  {/* Golden Crown Crest Apex */}
+  <path d="M50 12 L54 20 L62 16 L57 24 L50 22 L43 24 L38 16 L46 20 Z" fill="url(#gold-emblem-grad)" />
+  {/* Golden Geometric 'A' Body */}
+  <path d="M50 24 L78 86 H63 L50 54 L37 86 H22 L50 24 Z" fill="url(#gold-emblem-grad)" />
+  {/* Signature Sweeping Blue Arc Curve */}
+  <path d="M18 66 Q 50 48, 82 66" stroke="url(#blue-curve-grad)" stroke-width="6" stroke-linecap="round" />
+</svg>

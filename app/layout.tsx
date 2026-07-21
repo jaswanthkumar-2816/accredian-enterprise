@@ -39,6 +39,11 @@ export const metadata: Metadata = {
     url: "https://enterprise.accredian.com",
     siteName: "Accredian Enterprise",
   },
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
   twitter: {
     card: "summary_large_image",
     title: "Accredian Enterprise",
